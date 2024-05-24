@@ -8,6 +8,13 @@ public class Constants {
     public static final String PASSWORD = "1029384756A@";
     public static final String EXPECTED_SUCCESS_MESSAGE = "Thank you for registering with Main Website Store.";
     public static final String VALID_EMAIL = "onica.ndrei@yahoo.com";
+    public static final String COMPANY = "Academia Programatorilor";
+    public static final String ADDRESS = "Sos. Pantelimon nr. 91, sector 2";
+    public static final String CITY = "Bucuresti";
+    public static final String STATE = "Bucuresti";
+    public static final String POSTCODE = "021569";
+    public static final String COUNTRY = "Romania";
+    public static final String PHONE = "0756778899";
 
     public static String generateEmail(){
         Random rnd = new Random();
