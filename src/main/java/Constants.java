@@ -16,6 +16,9 @@ public class Constants {
     public static final String COUNTRY = "Romania";
     public static final String PHONE = "0756778899";
 
+    // colours
+    public static final String ERROR_RED_COLOUR = "rgb(224, 43, 39)";
+
     public static String generateEmail(){
         Random rnd = new Random();
         int number = rnd.nextInt(10000);
