@@ -1,12 +1,21 @@
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.annotations.Test;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 
 public class BaseTest {
-    @Test
-    public void goToWebsiteTest() {
-        WebDriver driver = new FirefoxDriver();
+    WebDriver driver;
+
+    @BeforeTest
+    public void setup() {
+        driver = new FirefoxDriver();
+        driver.manage().window().maximize();
         driver.get(Constants.BASE_URL);
-        driver.close();
+    }
+
+    @AfterTest
+    public void closeDriver() throws InterruptedException {
+        Wait.waitInSeconds(3);
+        //driver.close();
     }
 }
