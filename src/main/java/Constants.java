@@ -18,6 +18,9 @@ public class Constants {
 
     // colours
     public static final String ERROR_RED_COLOUR = "rgb(224, 43, 39)";
+    public static final String GREY_COLOUR = "rgb(110, 113, 110)";
+    public static final String ORANGE_COLOUR = "rgb(255, 1, 1)";
+
 
     public static String generateEmail(){
         Random rnd = new Random();
