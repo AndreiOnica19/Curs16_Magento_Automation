@@ -1,3 +1,5 @@
+package data;
+
 public class Wait {
     public static void waitInSeconds(int seconds) {
         try {

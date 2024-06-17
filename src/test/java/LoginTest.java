@@ -1,48 +1,59 @@
-import org.openqa.selenium.By;
+import data.Constants;
+import data.ErrorMessage;
+import data.Wait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.HomePage;
+import pages.SignInPage;
 
 public class LoginTest extends BaseTest {
 
     @Test
     public void loginTest() {
-        driver.findElement(By.xpath("(//a[contains(text(),'Sign In')])[1]")).click();
-        driver.findElement(By.cssSelector("#email")).sendKeys(Constants.VALID_EMAIL);
-        driver.findElement(By.xpath("(//input[@id='pass'])[1]")).sendKeys(Constants.PASSWORD);
-        driver.findElement(By.xpath("(//button[@id='send2'])[1]")).click();
+        HomePage homePage = new HomePage(driver);
+        homePage.clickSignInLink();
+        SignInPage signInPage = new SignInPage(driver);
+        signInPage.inputEmail();
+        signInPage.inputPassword();
+        signInPage.clickSignInButton();
     }
 
     @Test
     public void loginErrorWhenUserNameIsMissingTest() {
-        driver.findElement(By.xpath("(//li[@class='authorization-link'])[1]")).click();
+        HomePage homePage = new HomePage(driver);
+        homePage.clickSignInLink();
         Wait.waitInSeconds(2);
-        driver.findElement(By.xpath("(//input[@type='password'])[1]")).sendKeys("abc");
-        driver.findElement(By.xpath("(//button[@id='send2'])[1]")).click();
-        String message = driver.findElement(By.cssSelector("#email-error")).getText();
+        SignInPage signInPage = new SignInPage(driver);
+        signInPage.inputShortPassword();
+        signInPage.clickSignInButton();
+        String message = signInPage.getEmailError();
         Assert.assertEquals(message, ErrorMessage.REQUIRED_FIELD_ERROR_MESSAGE);
     }
 
     @Test
     public void loginErrorWithInvalidDataTest() {
-        driver.findElement(By.xpath("(//li[@class='authorization-link'])[1]")).click();
-        driver.findElement(By.xpath("//input[@id='email']")).sendKeys(Constants.EMAIL);
-        driver.findElement(By.xpath("(//input[@type='password'])[1]")).sendKeys("abc");
-        driver.findElement(By.xpath("(//button[@id='send2'])[1]")).click();
+        HomePage homePage = new HomePage(driver);
+        homePage.clickSignInLink();
+        SignInPage signInPage = new SignInPage(driver);
+        signInPage.inputEmail();
+        signInPage.inputShortPassword();
+        signInPage.clickSignInButton();
         Wait.waitInSeconds(2);
-        String message = driver.findElement(By.xpath("//div[@class='message-error error message']")).getText();
-        Assert.assertEquals(message, "The account sign-in was incorrect or your account is disabled temporarily. " +
-                "Please wait and try again later.");
+        String message = signInPage.getAccountError();
+        Assert.assertEquals(message, ErrorMessage.ACCOUNT_ERROR);
     }
 
     @Test
     public void loginErrorWhenPasswordIsMissing() {
-        driver.findElement(By.xpath("(//li[@class='authorization-link'])[1]")).click();
-        driver.findElement(By.xpath("//input[@id='email']")).sendKeys(Constants.EMAIL);
-        driver.findElement(By.xpath("(//button[@id='send2'])[1]")).click();
+        HomePage homePage = new HomePage(driver);
+        homePage.clickSignInLink();
+        SignInPage signInPage = new SignInPage(driver);
+        signInPage.inputEmail();
+        signInPage.clickSignInButton();
         Wait.waitInSeconds(2);
-        String message = driver.findElement(By.xpath("//div[@class='message-error error message']")).getText();
-        String actualColour = driver.findElement(By.cssSelector(".message-error.error.message")).getCssValue("color");
-        Assert.assertEquals(message, "A login and a password are required.");
+        String message = signInPage.getAccountError();
+        String actualColour = signInPage.getErrorMessageColour();
+        Assert.assertEquals(message, ErrorMessage.MISSING_PASSWORD_ERROR);
         Assert.assertEquals(actualColour, Constants.ERROR_RED_COLOUR);
     }
 }
