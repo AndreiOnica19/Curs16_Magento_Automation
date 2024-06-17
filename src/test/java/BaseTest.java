@@ -1,3 +1,5 @@
+import data.Constants;
+import data.Wait;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterTest;
@@ -14,7 +16,7 @@ public class BaseTest {
     }
 
     @AfterTest
-    public void closeDriver() throws InterruptedException {
+    public void closeDriver() {
         Wait.waitInSeconds(3);
         //driver.close();
     }

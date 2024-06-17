@@ -1,3 +1,5 @@
+package data;
+
 import java.util.Random;
 
 public class Constants {
@@ -27,4 +29,11 @@ public class Constants {
         int number = rnd.nextInt(10000);
         return "andrei" + number + "@gmail.com";
     }
+
+    public static CharSequence generateQuantity() {
+        Random rnd = new Random();
+        int quantity = rnd.nextInt(10) + 1;
+        return Integer.toString(quantity);
+    }
+
 }
