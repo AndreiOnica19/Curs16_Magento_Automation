@@ -1,5 +1,4 @@
-import data.Constants;
-import data.Wait;
+import data.Colours;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HomePage;
@@ -7,25 +6,34 @@ import pages.HomePage;
 public class ColourTest extends BaseTest {
     @Test
     public void verifyPanelWrapperReturnsGreyTest() {
-        Wait.waitInSeconds(3);
         HomePage homePage = new HomePage(driver);
         String actualColour = homePage.findPanelWrapperColour();
-        Assert.assertEquals(actualColour, Constants.GREY_COLOUR);
+        Assert.assertEquals(actualColour, Colours.GREY_COLOUR.getValue());
     }
 
     @Test
     public void verifyFooterColourReturnsGreyTest() {
-        Wait.waitInSeconds(3);
         HomePage homePage = new HomePage(driver);
         String actualColour = homePage.findFooterColour();
-        Assert.assertEquals(actualColour, Constants.GREY_COLOUR);
+        Assert.assertEquals(actualColour, Colours.GREY_COLOUR.getValue());
     }
 
     @Test
     public void verifyContentBarReturnsOrangeTest() {
-        Wait.waitInSeconds(3);
         HomePage homePage = new HomePage(driver);
         String actualColour = homePage.findContentBarColour();
-        Assert.assertEquals(actualColour, Constants.ORANGE_COLOUR);
+        Assert.assertEquals(actualColour, Colours.ORANGE_COLOUR.getValue());
+    }
+
+    @Test
+    public void findHotSellersElement() {
+        HomePage homePage = new HomePage(driver);
+        Assert.assertTrue(homePage.findHotSellersTitle());
+    }
+
+    @Test
+    public void findBackPackElement() {
+        HomePage homePage = new HomePage(driver);
+        Assert.assertTrue(homePage.findBackPackPhoto());
     }
 }

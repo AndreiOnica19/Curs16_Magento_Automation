@@ -1,6 +1,6 @@
-import data.Constants;
+import data.Colours;
 import data.ErrorMessage;
-import data.Wait;
+import utils.Wait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HomePage;
@@ -27,7 +27,7 @@ public class LoginTest extends BaseTest {
         signInPage.inputShortPassword();
         signInPage.clickSignInButton();
         String message = signInPage.getEmailError();
-        Assert.assertEquals(message, ErrorMessage.REQUIRED_FIELD_ERROR_MESSAGE);
+        Assert.assertEquals(message, ErrorMessage.REQUIRED_FIELD_ERROR_MESSAGE.getValue());
     }
 
     @Test
@@ -40,7 +40,7 @@ public class LoginTest extends BaseTest {
         signInPage.clickSignInButton();
         Wait.waitInSeconds(2);
         String message = signInPage.getAccountError();
-        Assert.assertEquals(message, ErrorMessage.ACCOUNT_ERROR);
+        Assert.assertEquals(message, ErrorMessage.ACCOUNT_ERROR.getValue());
     }
 
     @Test
@@ -53,7 +53,7 @@ public class LoginTest extends BaseTest {
         Wait.waitInSeconds(2);
         String message = signInPage.getAccountError();
         String actualColour = signInPage.getErrorMessageColour();
-        Assert.assertEquals(message, ErrorMessage.MISSING_PASSWORD_ERROR);
-        Assert.assertEquals(actualColour, Constants.ERROR_RED_COLOUR);
+        Assert.assertEquals(message, ErrorMessage.MISSING_PASSWORD_ERROR.getValue());
+        Assert.assertEquals(actualColour, Colours.ERROR_RED_COLOUR.getValue());
     }
 }

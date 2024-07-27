@@ -1,24 +1,27 @@
 package pages;
+import utils.Wait;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class HeaderPage extends BasePage {
     @FindBy(xpath = "(//a[contains(text(), 'Create an Account')])[1]")
-    WebElement createAccountLink;
+    private WebElement createAccountLink;
 
     @FindBy(xpath = "(//span[contains (text(), 'Gear')])")
-    WebElement gearLink;
+    private WebElement gearLink;
 
     @FindBy(xpath = "(//span[contains (text(), 'Women')])[1]")
-    WebElement womenLink;
+    private WebElement womenLink;
 
     @FindBy(css = ".action.showcart")
-    WebElement cartButton;
+    private WebElement cartButton;
 
     @FindBy(xpath = "//button[@id='top-cart-btn-checkout']")
-    WebElement proceedToCheckOutButton;
+    private WebElement proceedToCheckOutButton;
 
+    @FindBy(xpath = "//span[contains(text(), 'Order Summary')]")
+    private WebElement orderSummaryText;
 
     public HeaderPage(WebDriver driver) {
         super(driver);
@@ -42,6 +45,7 @@ public class HeaderPage extends BasePage {
 
     public void clickProceedToCheckOutButton() {
         proceedToCheckOutButton.click();
+        Wait.waitUntilElementIsVisible(orderSummaryText, driver);
     }
 
 
