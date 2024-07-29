@@ -91,6 +91,4 @@ public class ProductPage extends BasePage {
     public void selectColourGreen() {
         colourGreen.click();
     }
-
-
 }

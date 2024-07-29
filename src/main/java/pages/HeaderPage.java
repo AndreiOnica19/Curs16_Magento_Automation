@@ -47,6 +47,4 @@ public class HeaderPage extends BasePage {
         proceedToCheckOutButton.click();
         Wait.waitUntilElementIsVisible(orderSummaryText, driver);
     }
-
-
 }
