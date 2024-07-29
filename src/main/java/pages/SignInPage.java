@@ -1,27 +1,27 @@
 package pages;
-import data.Constants;
+import data.Data;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class SignInPage extends BasePage {
     @FindBy(css = "#email")
-    WebElement emailField;
+    private WebElement emailField;
 
     @FindBy(xpath = "(//input[@id='pass'])[1]")
-    WebElement passwordField;
+    private WebElement passwordField;
 
     @FindBy(xpath = "(//button[@id='send2'])[1]")
-    WebElement signInButton;
+    private WebElement signInButton;
 
     @FindBy(css = "#email-error")
-    WebElement missingEmailAddressError;
+    private WebElement missingEmailAddressError;
 
     @FindBy(xpath = "//div[@class='message-error error message']")
-    WebElement accountError;
+    private WebElement accountError;
 
     @FindBy(css = ".message-error.error.message")
-    WebElement errorMessage;
+    private WebElement errorMessage;
 
 
     public SignInPage(WebDriver driver) {
@@ -29,11 +29,11 @@ public class SignInPage extends BasePage {
     }
 
     public void inputEmail() {
-        emailField.sendKeys(Constants.EMAIL);
+        emailField.sendKeys(Data.EMAIL.getValue());
     }
 
     public void inputPassword() {
-        passwordField.sendKeys(Constants.PASSWORD);
+        passwordField.sendKeys(Data.PASSWORD.getValue());
     }
 
     public void inputShortPassword() {

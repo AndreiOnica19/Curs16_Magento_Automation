@@ -1,18 +1,18 @@
-import data.Constants;
-import data.Wait;
+import data.Data;
+import utils.Wait;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.BeforeMethod;
 
 public class BaseTest {
-    WebDriver driver;
+    protected WebDriver driver;
 
-    @BeforeTest
+    @BeforeMethod
     public void setup() {
-        driver = new FirefoxDriver();
-        driver.manage().window().maximize();
-        driver.get(Constants.BASE_URL);
+        this.driver = new FirefoxDriver();
+        this.driver.manage().window().maximize();
+        this.driver.get(Data.BASE_URL.getValue());
     }
 
     @AfterTest

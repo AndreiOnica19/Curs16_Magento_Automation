@@ -1,53 +1,53 @@
 package pages;
-import data.Constants;
+import data.Data;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class SignUpPage extends BasePage {
     @FindBy(xpath = "//input[@id='firstname']")
-    WebElement firstNameField;
+    private WebElement firstNameField;
 
     @FindBy(xpath = "//input[@name='lastname']")
-    WebElement lastNameField;
+    private WebElement lastNameField;
 
     @FindBy(xpath = "//input[@title='Email']")
-    WebElement emailField;
+    private WebElement emailField;
 
     @FindBy(xpath = "//input[@id='password']")
-    WebElement passwordField;
+    private WebElement passwordField;
 
     @FindBy(xpath = "//input[@id='password-confirmation']")
-    WebElement confirmationPasswordField;
+    private WebElement confirmationPasswordField;
 
     @FindBy(xpath = "//button[@class='action submit primary']")
-    WebElement createAccountButton;
+    private WebElement createAccountButton;
 
     @FindBy(xpath = "//div[@class='message-success success message']")
-    WebElement successMessage;
+    private WebElement successMessage;
 
     public SignUpPage(WebDriver driver) {
         super(driver);
     }
 
     public void inputFirstName() {
-        firstNameField.sendKeys(Constants.FIRST_NAME);
+        firstNameField.sendKeys(Data.FIRST_NAME.getValue());
     }
 
     public void inputLastName() {
-        lastNameField.sendKeys(Constants.LAST_NAME);
+        lastNameField.sendKeys(Data.LAST_NAME.getValue());
     }
 
     public void inputEmail() {
-        emailField.sendKeys(Constants.EMAIL);
+        emailField.sendKeys(Data.EMAIL.getValue());
     }
 
     public void inputPassword() {
-        passwordField.sendKeys(Constants.PASSWORD);
+        passwordField.sendKeys(Data.PASSWORD.getValue());
     }
 
     public void inputConfirmationPassword() {
-        confirmationPasswordField.sendKeys(Constants.PASSWORD);
+        confirmationPasswordField.sendKeys(Data.PASSWORD.getValue());
     }
 
     public void clickCreateAccountButton() {

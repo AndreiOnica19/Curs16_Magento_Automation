@@ -1,5 +1,5 @@
-import data.Constants;
-import data.Wait;
+import data.Data;
+import utils.Wait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HeaderPage;
@@ -19,6 +19,6 @@ public class SignUpTest extends BaseTest {
         signUpPage.clickCreateAccountButton();
         Wait.waitInSeconds(2);
         String message = signUpPage.getSuccessMessage();
-        Assert.assertEquals(message, Constants.EXPECTED_SUCCESS_MESSAGE);
+        Assert.assertEquals(message, Data.EXPECTED_SUCCESS_MESSAGE.getValue());
     }
 }

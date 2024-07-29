@@ -1,37 +1,44 @@
 package pages;
-import data.Constants;
+
+import data.Data;
+import utils.Wait;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class ProductPage extends BasePage {
     @FindBy(xpath = "(//a[contains(text(),'Jackets')])")
-    WebElement jacketsLink;
+    private WebElement jacketsLink;
 
     @FindBy(xpath = "(//a[@class='product-item-link'])[3]")
-    WebElement jupiterAllWeatherTrainer;
+    private WebElement jupiterAllWeatherTrainer;
 
     @FindBy(xpath = "//div[@id='option-label-size-143-item-169']")
-    WebElement sizeLSelect;
+    private WebElement sizeLSelect;
 
     @FindBy(xpath = "//div[@id='option-label-color-93-item-50']")
-    WebElement colourBlue;
+    private WebElement colourBlue;
 
     @FindBy(xpath = "//input[@id='qty']")
-    WebElement quantityField;
+    private WebElement quantityField;
 
     @FindBy(xpath = "//button[@id='product-addtocart-button']")
-    WebElement addToCartButton;
+    private WebElement addToCartButton;
 
     @FindBy(xpath = "(//a[@class='product-item-link'])[8]")
-    WebElement impulseDuffle;
+    private WebElement impulseDuffle;
 
     @FindBy(xpath = "(//a[@class='product-item-link'])[12]")
-    WebElement gabrielleMicroSleeveTop;
+    private WebElement gabrielleMicroSleeveTop;
 
     @FindBy(xpath = "//div[@id='option-label-color-93-item-53']")
-    WebElement colourGreen;
+    private WebElement colourGreen;
 
+    @FindBy(xpath = "(//div[@class='swatch-attribute-options clearfix'])[2]")
+    private WebElement colourOptions;
+
+    @FindBy(xpath = "//div[@class='message-success success message']")
+    private WebElement successMessage;
 
     public ProductPage(WebDriver driver) {
         super(driver);
@@ -42,10 +49,12 @@ public class ProductPage extends BasePage {
     }
 
     public void selectJupiterAllWeatherTrainer() {
+        Wait.waitUntilElementIsVisible(colourOptions, driver);
         jupiterAllWeatherTrainer.click();
     }
 
     public void selectSizeL() {
+        Wait.waitUntilElementIsVisible(sizeLSelect, driver);
         sizeLSelect.click();
     }
 
@@ -62,11 +71,12 @@ public class ProductPage extends BasePage {
     }
 
     public void inputQuantity() {
-        quantityField.sendKeys(Constants.generateQuantity());
+        quantityField.sendKeys(Data.generateQuantity());
     }
 
     public void clickAddToCartButton() {
         addToCartButton.click();
+        Wait.waitUntilElementIsVisible(successMessage, driver);
     }
 
     public void selectImpulseDuffle() {
@@ -75,10 +85,12 @@ public class ProductPage extends BasePage {
 
     public void selectGabrielleMicroSleeveTop() {
         gabrielleMicroSleeveTop.click();
+        Wait.waitUntilElementIsVisible(colourOptions, driver);
     }
 
     public void selectColourGreen() {
         colourGreen.click();
     }
+
 
 }
