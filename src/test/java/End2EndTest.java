@@ -41,24 +41,16 @@ public class End2EndTest extends BaseTest {
         headerPage.clickProceedToCheckOutButton();
         CheckOutPage checkOutPage = new CheckOutPage(driver);
         checkOutPage.inputEmail();
-        Wait.waitInSeconds(2);
         checkOutPage.inputFirstName();
         checkOutPage.inputLastName();
         checkOutPage.inputCompany();
         checkOutPage.inputAddress();
-        Wait.waitInSeconds(2);
         checkOutPage.inputCity();
-        Wait.waitInSeconds(3);
         checkOutPage.inputCountry();
-        Wait.waitInSeconds(2);
         checkOutPage.inputState();
-        Wait.waitInSeconds(2);
         checkOutPage.inputPostCode();
-        Wait.waitInSeconds(2);
         checkOutPage.inputPhone();
-        Wait.waitInSeconds(2);
         checkOutPage.clickNextButton();
-        Wait.waitInSeconds(7);
         checkOutPage.clickPlaceOrderButton();
     }
 }

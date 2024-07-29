@@ -1,4 +1,5 @@
 package pages;
+
 import data.Data;
 import utils.Wait;
 import org.openqa.selenium.WebDriver;
@@ -53,6 +54,7 @@ public class CheckOutPage extends BasePage {
     }
 
     public void inputFirstName() {
+        Wait.waitUntilElementIsVisible(firstNameField, driver);
         firstNameField.sendKeys(Data.FIRST_NAME.getValue());
     }
 
@@ -69,30 +71,37 @@ public class CheckOutPage extends BasePage {
     }
 
     public void inputCity() {
+        Wait.waitUntilElementIsVisible(cityField, driver);
         cityField.sendKeys(Data.CITY.getValue());
     }
 
     public void inputCountry() {
+        Wait.waitUntilElementIsVisible(countryField, driver);
         countryField.sendKeys(Data.COUNTRY.getValue());
     }
 
     public void inputState() {
+        Wait.waitUntilElementIsVisible(stateField, driver);
         stateField.sendKeys(Data.STATE.getValue());
     }
 
     public void inputPostCode() {
+        Wait.waitUntilElementIsVisible(postCodeField, driver);
         postCodeField.sendKeys(Data.POSTCODE.getValue());
     }
 
     public void inputPhone() {
+        Wait.waitUntilElementIsVisible(phoneField, driver);
         phoneField.sendKeys(Data.PHONE.getValue());
     }
 
     public void clickNextButton() {
+        Wait.waitUntilElementIsVisible(nextButton, driver);
         nextButton.click();
     }
 
     public void clickPlaceOrderButton() {
+        Wait.waitUntilElementIsVisible(placeOrderButton, driver);
         placeOrderButton.click();
     }
 }
