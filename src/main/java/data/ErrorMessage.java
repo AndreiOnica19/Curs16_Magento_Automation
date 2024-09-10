@@ -6,6 +6,7 @@ import lombok.Getter;
 @AllArgsConstructor
 @Getter
 public enum ErrorMessage {
+
     REQUIRED_FIELD_ERROR_MESSAGE("This is a required field."),
     ACCOUNT_ERROR("The account sign-in was incorrect or your account is disabled temporarily. "+
             "Please wait and try again later."),

@@ -1,10 +1,16 @@
 package pages;
+
 import data.Data;
+
+import lombok.extern.log4j.Log4j2;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+@Log4j2
 public class SignUpPage extends BasePage {
+
     @FindBy(xpath = "//input[@id='firstname']")
     private WebElement firstNameField;
 
@@ -32,29 +38,36 @@ public class SignUpPage extends BasePage {
 
     public void inputFirstName() {
         firstNameField.sendKeys(Data.FIRST_NAME.getValue());
+        log.info("First name entered");
     }
 
     public void inputLastName() {
         lastNameField.sendKeys(Data.LAST_NAME.getValue());
+        log.info("Last name entered");
     }
 
     public void inputEmail() {
         emailField.sendKeys(Data.EMAIL.getValue());
+        log.info("Email entered");
     }
 
     public void inputPassword() {
         passwordField.sendKeys(Data.PASSWORD.getValue());
+        log.info("Password entered");
     }
 
     public void inputConfirmationPassword() {
         confirmationPasswordField.sendKeys(Data.PASSWORD.getValue());
+        log.info("Confirmation password entered");
     }
 
     public void clickCreateAccountButton() {
         createAccountButton.click();
+        log.info("Create account button clicked");
     }
 
     public String getSuccessMessage() {
+        log.info("Get success message");
         return successMessage.getText();
     }
 }

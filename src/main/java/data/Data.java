@@ -8,6 +8,7 @@ import java.util.Random;
 @AllArgsConstructor
 @Getter
 public enum Data {
+
     PHONE("0756778899"),
     COUNTRY("Romania"),
     POSTCODE("021569"),
@@ -25,14 +26,16 @@ public enum Data {
 
     private final String value;
 
+    static Random rnd;
+
     public static String generateEmail(){
-        Random rnd = new Random();
+        rnd = new Random();
         int number = rnd.nextInt(10000);
         return "andrei" + number + "@gmail.com";
     }
 
     public static String generateQuantity() {
-        Random rnd = new Random();
+        rnd = new Random();
         int quantity = rnd.nextInt(10) + 1;
         return Integer.toString(quantity);
     }
