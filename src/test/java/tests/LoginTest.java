@@ -1,12 +1,17 @@
+package tests;
+
 import data.Colours;
 import data.ErrorMessage;
+
 import utils.Wait;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
 import pages.HomePage;
 import pages.SignInPage;
 
-public class LoginTest extends BaseTest {
+public class LoginTest extends TestBase {
 
     @Test
     public void loginTest() {

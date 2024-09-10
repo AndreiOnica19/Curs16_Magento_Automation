@@ -1,11 +1,17 @@
+package tests;
+
 import data.Data;
-import utils.Wait;
-import org.openqa.selenium.WebDriver;
+
 import org.openqa.selenium.firefox.FirefoxDriver;
+import utils.Wait;
+
+import org.openqa.selenium.WebDriver;
+
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 
-public class BaseTest {
+public class TestBase {
+
     protected WebDriver driver;
 
     @BeforeMethod
@@ -17,7 +23,8 @@ public class BaseTest {
 
     @AfterTest
     public void closeDriver() {
-        Wait.waitInSeconds(3);
-        //driver.close();
+        Wait.waitInSeconds(1);
+        driver.close();
+        driver.quit();
     }
 }

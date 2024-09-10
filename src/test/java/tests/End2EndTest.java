@@ -1,11 +1,13 @@
-import utils.Wait;
+package tests;
+
 import org.testng.annotations.Test;
+
 import pages.CheckOutPage;
 import pages.HeaderPage;
 import pages.HomePage;
 import pages.ProductPage;
 
-public class End2EndTest extends BaseTest {
+public class End2EndTest extends TestBase {
 
     @Test
     public void makeOrderTest() {
@@ -52,5 +54,6 @@ public class End2EndTest extends BaseTest {
         checkOutPage.inputPhone();
         checkOutPage.clickNextButton();
         checkOutPage.clickPlaceOrderButton();
+        driver.quit();
     }
 }
